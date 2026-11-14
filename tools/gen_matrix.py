@@ -17,7 +17,7 @@ GREEN = "#00ff66"
 HEAD = "#eafff0"
 
 
-def rain(width, height, seed, cell=20, step=18, min_len=8, max_len=22, streams=2):
+def rain(width, height, seed, cell=20, step=18, min_len=8, max_len=22, streams=2, name_prob=0.0):
     """Fallende Zeichenspalten. Jede Spalte ist ein <text> mit eigener Dauer."""
     rnd = random.Random(seed)
     cols = width // cell
@@ -26,6 +26,7 @@ def rain(width, height, seed, cell=20, step=18, min_len=8, max_len=22, streams=2
         x = c * cell + cell // 2
         for _ in range(streams):
             n = rnd.randint(min_len, max_len)
+            word = "KRYPT0R" if n >= 8 and rnd.random() < name_prob else ""
             dur = rnd.uniform(4.5, 11.0)
             delay = -rnd.uniform(0, dur)
             length = n * step
@@ -33,6 +34,10 @@ def rain(width, height, seed, cell=20, step=18, min_len=8, max_len=22, streams=2
             for i in range(n):
                 ch = rnd.choice(GLYPHS)
                 ch = {"<": "&lt;", ">": "&gt;", "&": "&amp;"}.get(ch, ch)
+                k = i - (n - len(word))
+                if word and k >= 0:
+                    spans.append(f'<tspan x="{x}" dy="{step}" class="n">{word[k]}</tspan>')
+                    continue
                 if i == n - 1:
                     spans.append(f'<tspan x="{x}" dy="{step}" fill="{HEAD}">{ch}</tspan>')
                 else:
@@ -54,6 +59,7 @@ def frame(width, height, body, extra_css="", extra_defs=""):
 {extra_defs}
 </defs>
 <style>
+.n{{fill:#eafff0;font-weight:800}}
 .r{{font:16px {FONT};fill:{GREEN};text-anchor:middle;animation:fall linear infinite;transform:translateY(var(--a))}}
 @keyframes fall{{from{{transform:translateY(var(--a))}}to{{transform:translateY(var(--b))}}}}
 {extra_css}
@@ -69,34 +75,70 @@ def frame(width, height, body, extra_css="", extra_defs=""):
 '''
 
 
+def dense(x0, y0, w, h, seed, cell=13, step=16):
+    """Dichter, nahtlos laufender Zahlenregen. Er wird nur innerhalb der
+    Buchstaben sichtbar (Maske) und bildet so den Namen."""
+    rnd = random.Random(seed)
+    n = h // step + 2
+    out = []
+    for c in range(w // cell):
+        x = x0 + c * cell + cell // 2
+        chars = "".join(rnd.choice("0123456789") for _ in range(n)) * 2
+        xs = " ".join([str(x)] * (2 * n))
+        ys = " ".join(str(y0 + (i - n) * step) for i in range(2 * n))
+        dur = rnd.uniform(2.2, 5.5)
+        fl = rnd.uniform(1.2, 3.5)
+        out.append(
+            f'<text class="d d{rnd.randint(1, 3)}" x="{xs}" y="{ys}" style="--n:{n * step}px;'
+            f'animation-duration:{dur:.2f}s,{fl:.2f}s;animation-delay:{-rnd.uniform(0, dur):.2f}s,{-rnd.uniform(0, fl):.2f}s">{chars}</text>'
+        )
+    return "\n".join(out)
+
+
 def header():
-    w, h = 1200, 440
-    cx, cy = w // 2, 218
+    w, h = 1200, 480
+    cx, base = w // 2, 272
     title = "KRYPT0R"
-    tattr = f'x="{cx}" y="{cy}" text-anchor="middle" textLength="640" lengthAdjust="spacingAndGlyphs"'
-    sub = "&gt; IT-Systemtechniker · Full-Stack · Self-Hosting · Lokale KI"
-    body = f'''{rain(w, h, seed=1337)}
+    tattr = f'x="{cx}" y="{base}" text-anchor="middle" textLength="920" lengthAdjust="spacingAndGlyphs"'
+    sub = "&gt; IT System Engineer · Full-Stack · Self-Hosting · Lokale KI"
+    dx, dy, dw, dh = 110, 96, 980, 210
+    c = 26  # Laenge der HUD-Ecken
+    body = f'''{rain(w, h, seed=1337, name_prob=0.12)}
 <rect width="{w}" height="{h}" fill="url(#vig)"/>
 <g class="t">
+<text class="halo" {tattr} filter="url(#glow)">{title}</text>
+<g mask="url(#m)">
+<rect x="{dx}" y="{dy}" width="{dw}" height="{dh}" fill="#013216"/>
+{dense(dx, dy, dw, dh, seed=77)}
+</g>
+<text class="edge" {tattr}>{title}</text>
 <text class="g1" {tattr}>{title}</text>
 <text class="g2" {tattr}>{title}</text>
-<text class="main" {tattr} filter="url(#glow)">{title}</text>
 </g>
-<rect class="line" x="{cx - 330}" y="{cy + 34}" width="660" height="2" fill="{GREEN}"/>
-<g clip-path="url(#type)"><text class="sub" x="{cx}" y="{cy + 80}" text-anchor="middle" textLength="640" lengthAdjust="spacingAndGlyphs">{sub}</text></g>
-<rect class="cur" x="{cx + 328}" y="{cy + 60}" width="13" height="25" fill="{GREEN}"/>
-<text class="tag" x="28" y="34">[ SYSTEM ONLINE ]</text>
-<text class="tag" x="{w - 28}" y="34" text-anchor="end">ACCESS GRANTED</text>
-<text class="tag" x="28" y="{h - 20}">0x4B 0x52 0x59 0x50 0x54 0x30 0x52</text>
-<text class="tag" x="{w - 28}" y="{h - 20}" text-anchor="end">NODE: CH · STATUS: BUILDING</text>'''
-    css = f'''.t text{{font:800 124px {FONT}}}
-.main{{fill:{GREEN}}}
-.g1{{fill:#ff2a6d;opacity:0;animation:g1 5.5s steps(1) infinite}}
-.g2{{fill:#05d9e8;opacity:0;animation:g2 5.5s steps(1) infinite}}
-.t{{animation:shake 5.5s steps(1) infinite}}
-@keyframes g1{{0%,91%,100%{{opacity:0;transform:none}}92%{{opacity:.85;transform:translate(-9px,2px)}}94%{{opacity:.85;transform:translate(7px,-3px)}}96%{{opacity:.6;transform:translate(-4px,0)}}98%{{opacity:0}}}}
-@keyframes g2{{0%,91%,100%{{opacity:0;transform:none}}92%{{opacity:.85;transform:translate(9px,-2px)}}94%{{opacity:.85;transform:translate(-7px,3px)}}96%{{opacity:.6;transform:translate(4px,0)}}98%{{opacity:0}}}}
-@keyframes shake{{0%,91%,98%,100%{{transform:none}}93%{{transform:translate(3px,0) skewX(-4deg)}}95%{{transform:translate(-3px,0) skewX(3deg)}}}}
+<rect class="beam" x="0" y="-90" width="{w}" height="90" fill="url(#beam)"/>
+<rect class="line" x="{cx - 330}" y="{base + 44}" width="660" height="2" fill="{GREEN}"/>
+<g clip-path="url(#type)"><text class="sub" x="{cx}" y="{base + 90}" text-anchor="middle" textLength="640" lengthAdjust="spacingAndGlyphs">{sub}</text></g>
+<rect class="cur" x="{cx + 328}" y="{base + 70}" width="13" height="25" fill="{GREEN}"/>
+<path class="hud" d="M14 {14 + c}V14H{14 + c}M{w - 14 - c} 14H{w - 14}V{14 + c}M{w - 14} {h - 14 - c}V{h - 14}H{w - 14 - c}M{14 + c} {h - 14}H14V{h - 14 - c}"/>
+<text class="tag" x="34" y="40">[ SYSTEM ONLINE ]</text>
+<text class="tag" x="{w - 34}" y="40" text-anchor="end">ACCESS GRANTED</text>
+<text class="tag" x="34" y="{h - 28}">0x4B 0x52 0x59 0x50 0x54 0x30 0x52</text>
+<text class="tag" x="{w - 34}" y="{h - 28}" text-anchor="end">NODE: CH · STATUS: BUILDING</text>'''
+    css = f'''.halo,.edge,.g1,.g2,.mt{{font:800 190px {FONT}}}
+.halo{{fill:{GREEN};opacity:.2}}
+.edge{{fill:none;stroke:{GREEN};stroke-width:1.5;stroke-opacity:.7}}
+.d{{font:700 14px {FONT};text-anchor:middle;animation:loop linear infinite,flick ease-in-out infinite alternate}}
+.d1{{fill:{GREEN}}}.d2{{fill:#7dffa8}}.d3{{fill:#e2ffec}}
+@keyframes loop{{from{{transform:translateY(0)}}to{{transform:translateY(var(--n))}}}}
+@keyframes flick{{from{{opacity:.6}}to{{opacity:1}}}}
+.g1{{fill:#ff2a6d;opacity:0;animation:g1 6s steps(1) infinite}}
+.g2{{fill:#05d9e8;opacity:0;animation:g2 6s steps(1) infinite}}
+.t{{animation:shake 6s steps(1) infinite}}
+@keyframes g1{{0%,91%,100%{{opacity:0;transform:none}}92%{{opacity:.7;transform:translate(-10px,2px)}}94%{{opacity:.7;transform:translate(8px,-3px)}}96%{{opacity:.5;transform:translate(-4px,0)}}98%{{opacity:0}}}}
+@keyframes g2{{0%,91%,100%{{opacity:0;transform:none}}92%{{opacity:.7;transform:translate(10px,-2px)}}94%{{opacity:.7;transform:translate(-8px,3px)}}96%{{opacity:.5;transform:translate(4px,0)}}98%{{opacity:0}}}}
+@keyframes shake{{0%,91%,98%,100%{{transform:none}}93%{{transform:translate(4px,0) skewX(-4deg)}}95%{{transform:translate(-4px,0) skewX(3deg)}}}}
+.beam{{animation:beam 7s linear infinite}}
+@keyframes beam{{from{{transform:translateY(0)}}to{{transform:translateY({h + 180}px)}}}}
 .line{{opacity:.55;transform-origin:{cx}px 0;animation:grow 1.4s ease-out both}}
 @keyframes grow{{from{{transform:scaleX(0)}}to{{transform:scaleX(1)}}}}
 .sub{{font:500 22px {FONT};fill:#b6ffcf}}
@@ -104,9 +146,12 @@ def header():
 @keyframes type{{from{{width:0}}to{{width:680px}}}}
 .cur{{opacity:0;animation:blink 1s steps(1) 4.1s infinite}}
 @keyframes blink{{0%,49%{{opacity:1}}50%,100%{{opacity:0}}}}
+.hud{{fill:none;stroke:{GREEN};stroke-width:2;opacity:.8}}
 .tag{{font:13px {FONT};fill:{GREEN};opacity:.9;letter-spacing:2px;stroke:#020a05;stroke-width:7px;paint-order:stroke}}'''
-    defs = f'''<radialGradient id="vig" cx="50%" cy="52%" r="62%"><stop offset="0" stop-color="#020a05" stop-opacity=".96"/><stop offset=".42" stop-color="#020a05" stop-opacity=".86"/><stop offset="1" stop-color="#020a05" stop-opacity=".1"/></radialGradient>
-<clipPath id="type"><rect x="{cx - 340}" y="{cy + 50}" width="680" height="44"/></clipPath>'''
+    defs = f'''<radialGradient id="vig" cx="50%" cy="50%" r="62%"><stop offset="0" stop-color="#020a05" stop-opacity=".93"/><stop offset=".5" stop-color="#020a05" stop-opacity=".8"/><stop offset="1" stop-color="#020a05" stop-opacity=".05"/></radialGradient>
+<linearGradient id="beam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{GREEN}" stop-opacity="0"/><stop offset=".85" stop-color="{GREEN}" stop-opacity=".16"/><stop offset="1" stop-color="{GREEN}" stop-opacity="0"/></linearGradient>
+<mask id="m" maskUnits="userSpaceOnUse" x="0" y="0" width="{w}" height="{h}"><text class="mt" {tattr} fill="#fff" stroke="#fff" stroke-width="7" stroke-linejoin="round">{title}</text></mask>
+<clipPath id="type"><rect x="{cx - 340}" y="{base + 60}" width="680" height="44"/></clipPath>'''
     return frame(w, h, body, css, defs)
 
 
@@ -124,7 +169,7 @@ def terminal():
     w, lh, top = 860, 30, 78
     lines = [
         ("p", "kryptor@matrix:~$ whoami"),
-        ("o", "Amar · IT-Systemtechniker in Ausbildung · Schweiz"),
+        ("o", "Amar · IT System Engineer in Ausbildung · Schweiz"),
         ("p", "kryptor@matrix:~$ cat mission.txt"),
         ("o", "Ich baue echte Produkte, kein Tutorial-Code."),
         ("p", "kryptor@matrix:~$ ls ~/projects"),

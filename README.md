@@ -1,11 +1,11 @@
 <div align="center">
-  <img src="./assets/matrix-header.svg" width="100%" alt="KRYPT0R – IT-Systemtechniker · Full-Stack · Self-Hosting · Lokale KI" />
+  <img src="./assets/matrix-header.svg" width="100%" alt="KRYPT0R – IT System Engineer · Full-Stack · Self-Hosting · Lokale KI" />
 </div>
 
 <br />
 
 <div align="center">
-  <img src="./assets/terminal.svg" width="760" alt="whoami: Amar, IT-Systemtechniker in Ausbildung, Schweiz. Ich baue echte Produkte, kein Tutorial-Code." />
+  <img src="./assets/terminal.svg" width="760" alt="whoami: Amar, IT System Engineer in Ausbildung, Schweiz. Ich baue echte Produkte, kein Tutorial-Code." />
 </div>
 
 <br />
