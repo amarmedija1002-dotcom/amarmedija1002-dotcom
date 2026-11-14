@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 340" width="860" height="340" role="img" aria-label="KRYPT0R">
+<defs>
+<clipPath id="card"><rect width="860" height="340" rx="16"/></clipPath>
+<pattern id="scan" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="1" fill="#000" opacity=".35"/></pattern>
+<filter id="glow" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<clipPath id="l0"><rect class="c0" x="28" y="56" width="804" height="30"/></clipPath><clipPath id="l1"><rect class="c1" x="28" y="86" width="804" height="30"/></clipPath><clipPath id="l2"><rect class="c2" x="28" y="116" width="804" height="30"/></clipPath><clipPath id="l3"><rect class="c3" x="28" y="146" width="804" height="30"/></clipPath><clipPath id="l4"><rect class="c4" x="28" y="176" width="804" height="30"/></clipPath><clipPath id="l5"><rect class="c5" x="28" y="206" width="804" height="30"/></clipPath><clipPath id="l6"><rect class="c6" x="28" y="236" width="804" height="30"/></clipPath><clipPath id="l7"><rect class="c7" x="28" y="266" width="804" height="30"/></clipPath>
+</defs>
+<style>
+.r{font:16px ui-monospace,SFMono-Regular,Menlo,Consolas,'DejaVu Sans Mono','Liberation Mono',monospace;fill:#00ff66;text-anchor:middle;animation:fall linear infinite;transform:translateY(var(--a))}
+@keyframes fall{from{transform:translateY(var(--a))}to{transform:translateY(var(--b))}}
+.p,.o,.bar{font:17px ui-monospace,SFMono-Regular,Menlo,Consolas,'DejaVu Sans Mono','Liberation Mono',monospace}
+.p{fill:#00ff66}.o{fill:#c9ffdb}.bar{fill:#00ff66;opacity:.6;font-size:13px}
+@keyframes w{from{width:0}to{width:804px}}
+.c0{animation:w 0.84s steps(24) 0.40s both}.c1{animation:w .01s linear 1.49s both}.c2{animation:w 1.16s steps(33) 1.94s both}.c3{animation:w .01s linear 3.35s both}.c4{animation:w 1.09s steps(31) 3.80s both}.c5{animation:w .01s linear 5.13s both}.c6{animation:w 0.84s steps(24) 5.58s both}.c7{animation:w .01s linear 6.67s both}
+.last{opacity:0;animation:show .01s linear 7.12s both}
+@keyframes show{to{opacity:1}}
+.cur{animation:blink 1s steps(1) infinite}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.r{transform:translateY(40px)}}
+</style>
+<g clip-path="url(#card)">
+<rect width="860" height="340" fill="#020a05"/>
+<rect width="860" height="40" fill="#06180d"/>
+<circle cx="26" cy="20" r="6.5" fill="#ff5f57"/><circle cx="48" cy="20" r="6.5" fill="#febc2e"/><circle cx="70" cy="20" r="6.5" fill="#28c840"/>
+<text class="bar" x="430" y="25" text-anchor="middle">kryptor@matrix: ~</text>
+<g clip-path="url(#l0)"><text class="p" x="30" y="78" xml:space="preserve">kryptor@matrix:~$ whoami</text></g><g clip-path="url(#l1)"><text class="o" x="30" y="108" xml:space="preserve">Amar · IT-Systemtechniker in Ausbildung · Schweiz</text></g><g clip-path="url(#l2)"><text class="p" x="30" y="138" xml:space="preserve">kryptor@matrix:~$ cat mission.txt</text></g><g clip-path="url(#l3)"><text class="o" x="30" y="168" xml:space="preserve">Ich baue echte Produkte, kein Tutorial-Code.</text></g><g clip-path="url(#l4)"><text class="p" x="30" y="198" xml:space="preserve">kryptor@matrix:~$ ls ~/projects</text></g><g clip-path="url(#l5)"><text class="o" x="30" y="228" xml:space="preserve">secret-calc/  homelab/  local-ai/</text></g><g clip-path="url(#l6)"><text class="p" x="30" y="258" xml:space="preserve">kryptor@matrix:~$ uptime</text></g><g clip-path="url(#l7)"><text class="o" x="30" y="288" xml:space="preserve">always shipping</text></g>
+<g class="last"><text class="p" x="30" y="318">kryptor@matrix:~$</text><rect class="cur" x="222" y="300" width="11" height="22" fill="#00ff66"/></g>
+<rect width="860" height="340" fill="url(#scan)"/>
+</g>
+<rect x="1" y="1" width="858" height="338" rx="15" fill="none" stroke="#00ff66" stroke-opacity=".35" stroke-width="2"/>
+</svg>

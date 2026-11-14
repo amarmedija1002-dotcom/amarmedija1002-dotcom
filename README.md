@@ -1,102 +1,70 @@
-<picture data-importer="pacman">
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/maurodesouza/maurodesouza/pacman-output/pacman-contribution-graph-dark.svg?game=pacman">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/maurodesouza/maurodesouza/pacman-output/pacman-contribution-graph.svg?game=pacman">
-  <img alt="pacman contribution graph" src="https://raw.githubusercontent.com/maurodesouza/maurodesouza/pacman-output/pacman-contribution-graph.svg?game=pacman">
-</picture>
-
-###
-
-<div data-importer="techs" align="left">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="40" alt="javascript logo"  />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" height="40" alt="typescript logo"  />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="40" alt="react logo"  />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg" height="40" alt="jest logo"  />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/storybook/storybook-original.svg" height="40" alt="storybook logo"  />
+<div align="center">
+  <img src="./assets/matrix-header.svg" width="100%" alt="KRYPT0R – IT-Systemtechniker · Full-Stack · Self-Hosting · Lokale KI" />
 </div>
 
-###
+<br />
 
-<div data-importer="techs" align="left">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="40" alt="javascript logo"  />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" height="40" alt="typescript logo"  />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="40" alt="react logo"  />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg" height="40" alt="jest logo"  />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/storybook/storybook-original.svg" height="40" alt="storybook logo"  />
+<div align="center">
+  <img src="./assets/terminal.svg" width="760" alt="whoami: Amar, IT-Systemtechniker in Ausbildung, Schweiz. Ich baue echte Produkte, kein Tutorial-Code." />
 </div>
 
-###
+<br />
 
-<p data-importer="text" align="left">Hello World!!</p>
+## `> ./hauptprojekt --info`
 
-###
+### 🔐 SecretCalc
 
-<div data-importer="techs" align="left">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="40" alt="javascript logo"  />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" height="40" alt="typescript logo"  />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="40" alt="react logo"  />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg" height="40" alt="jest logo"  />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/storybook/storybook-original.svg" height="40" alt="storybook logo"  />
+Ein getarnter Messenger, der wie ein normaler Taschenrechner aussieht.
+
+- React + Vite Frontend mit 4 Premium-Themes
+- Node.js / Express Backend mit JWT-Auth
+- PostgreSQL Datenbank
+- Capacitor Android APK
+- WebSocket Echtzeit-Chat
+- End-to-End verschlüsselte Secret Chats mit PIN-Lock
+- Admin Panel (User-Verwaltung, Ban/Unban)
+- Automatische Backups + CLI Chat-Viewer
+
+| Bereich | Technik |
+|---|---|
+| Backend | Node.js, Express, PostgreSQL, JWT, bcrypt |
+| Frontend | React, Vite, Zustand, Dexie, TailwindCSS |
+| Mobile | Capacitor, Android (APK) |
+| DevOps | Docker, systemd |
+
+## `> cat stack.txt`
+
+<div align="center">
+
+![TypeScript](https://img.shields.io/badge/TypeScript-020a05?style=for-the-badge&logo=typescript&logoColor=00ff66)
+![JavaScript](https://img.shields.io/badge/JavaScript-020a05?style=for-the-badge&logo=javascript&logoColor=00ff66)
+![React](https://img.shields.io/badge/React-020a05?style=for-the-badge&logo=react&logoColor=00ff66)
+![Vite](https://img.shields.io/badge/Vite-020a05?style=for-the-badge&logo=vite&logoColor=00ff66)
+![Tailwind](https://img.shields.io/badge/Tailwind-020a05?style=for-the-badge&logo=tailwindcss&logoColor=00ff66)
+
+![Node.js](https://img.shields.io/badge/Node.js-020a05?style=for-the-badge&logo=nodedotjs&logoColor=00ff66)
+![Express](https://img.shields.io/badge/Express-020a05?style=for-the-badge&logo=express&logoColor=00ff66)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-020a05?style=for-the-badge&logo=postgresql&logoColor=00ff66)
+![Python](https://img.shields.io/badge/Python-020a05?style=for-the-badge&logo=python&logoColor=00ff66)
+
+![Docker](https://img.shields.io/badge/Docker-020a05?style=for-the-badge&logo=docker&logoColor=00ff66)
+![Linux](https://img.shields.io/badge/Linux-020a05?style=for-the-badge&logo=linux&logoColor=00ff66)
+![Proxmox](https://img.shields.io/badge/Proxmox-020a05?style=for-the-badge&logo=proxmox&logoColor=00ff66)
+![Android](https://img.shields.io/badge/Android-020a05?style=for-the-badge&logo=android&logoColor=00ff66)
+![Ollama](https://img.shields.io/badge/Ollama-020a05?style=for-the-badge&logo=ollama&logoColor=00ff66)
+
 </div>
 
-###
+## `> tail -f lernpfad.log`
 
-<div data-importer="stats" align="center">
-  <img src="https://raw.githubusercontent.com/maurodesouza/maurodesouza/stats-output/stats.svg?hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=dracula&locale=en&hide_border=false&order=1" height="150" alt="stats graph"  />
-  <img src="https://raw.githubusercontent.com/maurodesouza/maurodesouza/languages-output/languages.svg?locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=dracula&hide_border=false&order=2" height="150" alt="languages graph"  />
+| Zertifikat | Bereich | Status |
+|---|---|---|
+| AZ-900 | Azure Fundamentals | 🎯 In Vorbereitung |
+| AZ-104 | Azure Administrator | 📅 Geplant |
+| CCNA | Netzwerk | 📅 Geplant |
+
+<br />
+
+<div align="center">
+  <img src="./assets/matrix-footer.svg" width="100%" alt="End of transmission" />
 </div>
-
-###
-
-<img data-importer="snake" src="https://raw.githubusercontent.com/maurodesouza/maurodesouza/snake-output/snake.svg" alt="Snake animation" />
-
-###
-
-<div data-importer="music" align="center">
-  <img src="https://spotify-recently-played-readme.vercel.app/api?count=5" alt="Spotify recently played"  />
-</div>
-
-###
-
-<div data-importer="profile-views" align="center">
-  <img data-importer="profile-views" src="https://visitor-badge.laobi.icu/badge?page_id=maurodesouza.maurodesouza&"  />
-</div>
-
-###
-
-<div data-importer="image" align="center">
-  <img data-importer="image" height="200" src="https://i.imgflip.com/65efzo.gif"  />
-</div>
-
-###
-
-<div data-importer="border">
-  <img style="100%" src="https://capsule-render.vercel.app/api?type=waving&height=100&section=header&reversal=false&fontSize=70&fontColor=FFFFFF&fontAlign=50&fontAlignY=50&stroke=-&descSize=20&descAlign=50&descAlignY=50&theme=cobalt"  />
-</div>
-
-###
-
-<div data-importer="activities" align="center" style="width: 100%">
-  <a target="_blank" href="https://github-readme-medium-recent-article.vercel.app/medium/@undefined/0">
-    <img style="width: 100%" src="https://github-readme-medium-recent-article.vercel.app/medium/@undefined/0" alt="Medium post 1"  />
-  </a>
-  <a target="_blank" href="https://github-readme-medium-recent-article.vercel.app/medium/@undefined/1">
-    <img style="width: 100%" src="https://github-readme-medium-recent-article.vercel.app/medium/@undefined/1" alt="Medium post 2"  />
-  </a>
-  <a target="_blank" href="https://github-readme-medium-recent-article.vercel.app/medium/@undefined/2">
-    <img style="width: 100%" src="https://github-readme-medium-recent-article.vercel.app/medium/@undefined/2" alt="Medium post 3"  />
-  </a>
-</div>
-
-###
